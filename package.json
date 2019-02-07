@@ -1,15 +1,33 @@
 {
-  "name": "",
-  "version": "",
+  "name": "fec4-product-options",
+  "version": "1.0.0",
   "description": "",
-  "author": "",
-  "license": "",
+  "main": "index.js",
+  "author": "Jake Ascher",
+  "license": "ISC",
   "engines": {
     "node": ">=6.13.0"
   },
   "scripts": {
+    "start": "nodemon server/index.js",
+    "test": "",
+    "dev:react": "webpack -d --watch",
+    "db:setup": "node db/seed.js"
   },
   "dependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.5",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "jest": "^24.1.0",
+    "jquery": "^3.3.1",
+    "mongoose": "^5.4.10",
+    "react": "^16.8.1",
+    "react-dom": "^16.8.1",
+    "webpack": "^4.29.3"
   },
   "devDependencies": {
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor"

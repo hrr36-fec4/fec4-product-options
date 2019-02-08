@@ -10,7 +10,7 @@
   },
   "scripts": {
     "start": "nodemon server/index.js",
-    "test": "",
+    "test": "jest",
     "dev:react": "webpack -d --watch",
     "db:setup": "node db/seed.js"
   },

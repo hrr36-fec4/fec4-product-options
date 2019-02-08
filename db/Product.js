@@ -9,8 +9,7 @@ const variantSchema = new mongoose.Schema({
     ref: 'Product'
   },
   price: Number,
-  colorName: String,
-  colorValue: String,
+  color: String,
   size: String
 });
 

@@ -6,8 +6,7 @@ let generateFakeVariants = (id) => {
     let variant = {
       itemId: id,
       price: (Math.random() * 100).toFixed(2),
-      colorName: faker.commerce.color(),
-      colorValue: `#${Math.floor(Math.random() * 16777215).toString(16)}`,
+      color: faker.commerce.color(),
       size: ['XS', 'S', 'M', 'L', 'XL'][Math.floor(Math.random() * 5)]
     };
     variants.push(variant);

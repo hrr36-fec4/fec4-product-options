@@ -1,8 +1,8 @@
 const faker = require('faker');
 
-exports.generateFakeVariants = (id) => {
+let generateFakeVariants = (id) => {
   let variants = [];
-  for (var i = 0; i < (Math.floor(Math.random() * 6)); i++) {
+  for (var i = 0; i < (1 + Math.floor(Math.random() * 6)); i++) {
     let variant = {
       itemId: id,
       price: (Math.random() * 100).toFixed(2),
@@ -15,13 +15,13 @@ exports.generateFakeVariants = (id) => {
   return variants;
 };
 
-exports.generateFakeProduct = () => {
+let generateFakeProduct = () => {
   let id = Math.floor(Math.random() * 1000000);
   let fakeProduct = {
     itemId: id,
-    brand: faker.commerce.productName(),
+    brand: faker.commerce.productName().split(' ')[0],
     title: faker.commerce.productName(),
-    averageRating: Math.floor(Math.random() * 5),
+    averageRating: (Math.random() * 5).toFixed(1),
     reviewCount: Math.floor(Math.random() * 100),
     freeShipping: faker.random.boolean(),
     shippingRestriction: faker.random.boolean(),
@@ -29,3 +29,6 @@ exports.generateFakeProduct = () => {
   };
   return fakeProduct;
 };
+
+exports.generateFakeVariants = generateFakeVariants;
+exports.generateFakeProduct = generateFakeProduct;

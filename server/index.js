@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const Product = require('../db/Product.js');
 
 const app = express();
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -16,6 +16,19 @@ app.get('/products', (req, res) => {
     .then(products => res.status(200).send(JSON.stringify(products)))
     .catch(err => {
       console.error('There was an error retrieving the products:', err);
+      res.status(500).send('');
+    });
+});
+
+app.get('/products/random', (req, res) => {
+  Product.find()
+    .then(products => {
+      let numOfProducts = products.length;
+      let randomProduct = products[Math.floor(Math.random() * numOfProducts)];
+      res.status(200).send(JSON.stringify(randomProduct));
+    })
+    .catch(err => {
+      console.error('There was an error retrieving a random product:', err);
       res.status(500).send('');
     });
 });

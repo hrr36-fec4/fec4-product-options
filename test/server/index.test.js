@@ -14,6 +14,19 @@ describe('GET /products', () => {
   });
 });
 
+describe('GET /products/random', () => {
+  test('retrieves a random product from the database', (done) => {
+    request(app)
+      .get('/products/random')
+      .expect(res => {
+        expect(res.statusCode).toBe(200);
+        let product = JSON.parse(res.text);
+        expect(Object.keys(product).length).toBeGreaterThan(0);
+      })
+      .end(done);
+  });
+});
+
 describe('GET /products/:itemId', () => {
   test('finds a product with given itemId', (done) => {
     return request(app)

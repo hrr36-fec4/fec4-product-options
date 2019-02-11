@@ -11,6 +11,26 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(express.static(__dirname + '/../client/dist'));
 
+app.get('/products', (req, res) => {
+  Product.find()
+    .then(products => res.status(200).send(JSON.stringify(products)))
+    .catch(err => {
+      console.error('There was an error retrieving the products:', err);
+      res.status(500).send('');
+    });
+});
+
+app.get('/products/:itemId', (req, res) => {
+  Product.find({ itemId: req.params.itemId })
+    .then(product => res.status(200).send(JSON.stringify(product)))
+    .catch(err => {
+      console.error('There was an error retrieving a product:', err);
+      res.status(500).send('');
+    });
+});
+
 app.listen(PORT, () => {
   console.log(`listening on port ${PORT}`);
 });
+
+module.exports = app;

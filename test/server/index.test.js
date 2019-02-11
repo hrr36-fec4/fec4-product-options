@@ -14,7 +14,7 @@ describe('GET /products', () => {
   });
 });
 
-describe('GET /product', () => {
+describe('GET /products/:itemId', () => {
   test('finds a product with given itemId', (done) => {
     return request(app)
       .get('/products')

@@ -48,7 +48,12 @@ class ProductOptions extends React.Component {
       return accum.concat(!accum.includes(currentSize) ? currentSize : []);
     }, []);
 
-    return uniqueSizes.map((uniqueSize, i) => <Size size={uniqueSize} key={i} />)
+    const sizeOptions = ['XS', 'S', 'M', 'L', 'XL'];
+    let sortedUniqueSizes = uniqueSizes.sort((a, b) => {
+      return sizeOptions.indexOf(a) - sizeOptions.indexOf(b);
+    });
+
+    return sortedUniqueSizes.map((uniqueSize, i) => <Size size={uniqueSize} key={i} />)
   }
 
   render() {

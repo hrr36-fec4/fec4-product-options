@@ -15,6 +15,8 @@ class ProductOptions extends React.Component {
     };
 
     this.getRandomProduct = this.getRandomProduct.bind(this);
+    this.getColors = this.getColors.bind(this);
+    this.getSizes = this.getSizes.bind(this);
   }
 
   componentDidMount() {
@@ -27,20 +29,26 @@ class ProductOptions extends React.Component {
         let randomProduct = response.data;
         let randomVariant = randomProduct.variants[Math.floor(Math.random() * randomProduct.variants.length)];
 
-        const getUniqueSizes = () => {
-          return randomProduct.variants.reduce((accum, currentVariant) => {
-            let currentSize = currentVariant.size;
-            return accum.concat(!accum.includes(currentSize) ? currentSize : []);
-          }, []);
-        };
-
         this.setState({
           product: randomProduct,
           variant: randomVariant,
-          colors: randomProduct.variants.map((variant, i) => <Color color={variant.color} key={i} />),
-          sizes: getUniqueSizes().map((uniqueSize, i) => <Size size={uniqueSize} key={i} />)
+          colors: this.getColors(randomProduct),
+          sizes: this.getSizes(randomProduct)
         });
       });
+  }
+
+  getColors(product) {
+    return product.variants.map((variant, i) => <Color color={variant.color} key={i} />)
+  }
+
+  getSizes(product) {
+    let uniqueSizes = product.variants.reduce((accum, currentVariant) => {
+      let currentSize = currentVariant.size;
+      return accum.concat(!accum.includes(currentSize) ? currentSize : []);
+    }, []);
+
+    return uniqueSizes.map((uniqueSize, i) => <Size size={uniqueSize} key={i} />)
   }
 
   render() {

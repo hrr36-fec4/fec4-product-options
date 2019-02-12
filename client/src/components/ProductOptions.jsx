@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 import Color from './Color.jsx';
+import Size from './Size.jsx';
 
 class ProductOptions extends React.Component {
   constructor() {
@@ -24,13 +25,20 @@ class ProductOptions extends React.Component {
     axios.get('http://localhost:3001/products/random')
       .then((response) => {
         let randomProduct = response.data;
-        let randomVariantIndex = Math.floor(Math.random() * randomProduct.variants.length);
+        let randomVariant = randomProduct.variants[Math.floor(Math.random() * randomProduct.variants.length)];
+
+        const getUniqueSizes = () => {
+          return randomProduct.variants.reduce((accum, currentVariant) => {
+            let currentSize = currentVariant.size;
+            return accum.concat(!accum.includes(currentSize) ? currentSize : []);
+          }, []);
+        };
 
         this.setState({
           product: randomProduct,
-          variant: randomProduct.variants[randomVariantIndex],
-          colors: randomProduct.variants.map(variant => <Color color={variant.color} />),
-          sizes: randomProduct.variants.map(variant => variant.size)
+          variant: randomVariant,
+          colors: randomProduct.variants.map((variant, i) => <Color color={variant.color} key={i} />),
+          sizes: getUniqueSizes().map((uniqueSize, i) => <Size size={uniqueSize} key={i} />)
         });
       });
   }
@@ -46,6 +54,12 @@ class ProductOptions extends React.Component {
           <a href="#"><i className="fas fa-truck"></i>This item ships for FREE!</a>
         </div>
         <div className="colors">{this.state.colors}</div>
+        <div className="sizes">
+          <label htmlFor="size-select">Size</label>
+          <select id="size-select">
+            {this.state.sizes}
+          </select>
+        </div>
       </div>
     );
   }

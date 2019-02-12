@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
+import Stars from './Stars.jsx';
 import Color from './Color.jsx';
 import Size from './Size.jsx';
 
@@ -62,6 +63,10 @@ class ProductOptions extends React.Component {
         <div className="brand"><a href="#">{this.state.product.brand}</a></div>
         <div className="title">{this.state.product.title}</div>
         <div className="itemId">Item #{this.state.product.itemId}</div>
+        <div className="rating">
+          <Stars rating={this.state.product.averageRating} />
+          {this.state.product.averageRating} ({this.state.product.reviewCount})
+        </div>
         <div className="price">${this.state.variant.price}</div>
         <div className="freeShipping" style={{display: this.state.product.freeShipping ? 'block' : 'none'}}>
           <a href="#"><i className="fas fa-truck"></i>This item ships for FREE!</a>

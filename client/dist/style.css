@@ -22,6 +22,12 @@
   float: right;
 }
 
+.stars {
+  display: inline-block;
+  color: #bf5b00;
+  margin-right: 10px;
+}
+
 .price {
   font-family: Domine, serif;
   font-size: 20px;

@@ -7,10 +7,10 @@ const Stars = ({ rating }) => {
 
   for (let i = 0; i < 5; i++) {
     if (num > 0) {
-      stars.push(<i className="fas fa-star" />);
+      stars.push(<i className="fas fa-star" key={i} />);
       num -= 1;
     } else {
-      stars.push(<i className="far fa-star" />);
+      stars.push(<i className="far fa-star" key={i} />);
     }
   }
 

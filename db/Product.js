@@ -1,22 +1,23 @@
+require('./index.js'); // db connection
 const mongoose = require('mongoose');
 const uniqueValidator = require('mongoose-unique-validator');
-const db = require('./index.js');
+
 mongoose.Promise = global.Promise;
 
 const variantSchema = new mongoose.Schema({
   itemId: {
     type: Number,
-    ref: 'Product'
+    ref: 'Product',
   },
   price: Number,
   color: String,
-  size: String
+  size: String,
 });
 
 const productSchema = new mongoose.Schema({
   itemId: {
     type: Number,
-    unique: true
+    unique: true,
   },
   brand: String,
   title: String,
@@ -24,7 +25,7 @@ const productSchema = new mongoose.Schema({
   reviewCount: Number,
   freeShipping: Boolean,
   shippingRestriction: Boolean,
-  variants: [variantSchema]
+  variants: [variantSchema],
 });
 
 productSchema.plugin(uniqueValidator);

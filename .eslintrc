@@ -6,6 +6,7 @@
     },
     "extends": "airbnb",
     "rules": {
-      no-plusplus: ["error", { "allowForLoopAfterthoughts": true }]
+      no-plusplus: ["error", { "allowForLoopAfterthoughts": true }],
+      dot-notation: ["error", { "allowPattern": "_id" }]
     }
 }

@@ -5,7 +5,7 @@ const path = require('path');
 const Product = require('../db/Product.js');
 
 const app = express();
-const PORT = process.env.PORT || 3001;
+const port = 3001;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -40,8 +40,10 @@ app.get('/products/:itemId', (req, res) => {
     });
 });
 
-app.listen(PORT, () => {
-  console.log(`listening on port ${PORT}`);
-});
+if (!module.parent) {
+  app.listen(port, () => {
+    console.log(`listening on port ${port}`);
+  });
+}
 
 module.exports = app;

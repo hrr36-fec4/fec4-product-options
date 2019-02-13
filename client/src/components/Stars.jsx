@@ -1,20 +1,28 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const Stars = (props) => {
+const Stars = ({ rating }) => {
+  let num = Math.floor(rating);
+  const stars = [];
 
-  let num = Math.floor(props.rating);
-  let stars = [];
-
-  for (var i = 0; i < 5; i++) {
+  for (let i = 0; i < 5; i++) {
     if (num > 0) {
-      stars.push(<i className="fas fa-star"></i>);
-      num--;
+      stars.push(<i className="fas fa-star" key={i} />);
+      num -= 1;
     } else {
-      stars.push(<i className="far fa-star"></i>);
+      stars.push(<i className="far fa-star" key={i} />);
     }
   }
 
   return <div className="stars">{stars}</div>;
-}
+};
+
+Stars.propTypes = {
+  rating: PropTypes.number,
+};
+
+Stars.defaultProps = {
+  rating: 0,
+};
 
 export default Stars;

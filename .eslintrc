@@ -1,3 +1,14 @@
 {
-  extends: 'airbnb'
+    "parser": "babel-eslint",
+    "env": {
+        "browser": true,
+        "node": true,
+        "jest/globals": true
+    },
+    "extends": "airbnb",
+    "plugins": ["jest"],
+    "rules": {
+      no-plusplus: ["error", { "allowForLoopAfterthoughts": true }],
+      dot-notation: ["error", { "allowPattern": "_id" }]
+    }
 }

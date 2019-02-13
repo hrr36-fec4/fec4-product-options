@@ -1,9 +1,8 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import axios from 'axios';
-import Stars from './Stars.jsx';
-import Color from './Color.jsx';
-import Size from './Size.jsx';
+import Stars from './Stars';
+import Color from './Color';
+import Size from './Size';
 
 class ProductOptions extends React.Component {
   constructor() {
@@ -12,12 +11,10 @@ class ProductOptions extends React.Component {
       product: {},
       variant: {},
       colors: [],
-      sizes: []
+      sizes: [],
     };
 
     this.getRandomProduct = this.getRandomProduct.bind(this);
-    this.getColors = this.getColors.bind(this);
-    this.getSizes = this.getSizes.bind(this);
   }
 
   componentDidMount() {
@@ -27,59 +24,78 @@ class ProductOptions extends React.Component {
   getRandomProduct() {
     axios.get('http://localhost:3001/products/random')
       .then((response) => {
-        let randomProduct = response.data;
-        let randomVariant = randomProduct.variants[Math.floor(Math.random() * randomProduct.variants.length)];
+        const randomProduct = response.data;
+        const randomIndex = Math.floor(Math.random() * randomProduct.variants.length);
+        const randomVariant = randomProduct.variants[randomIndex];
 
         this.setState({
           product: randomProduct,
           variant: randomVariant,
-          colors: this.getColors(randomProduct),
-          sizes: this.getSizes(randomProduct)
+          colors: this.constructor.getColors(randomProduct),
+          sizes: this.constructor.getSizes(randomProduct),
         });
       });
   }
 
-  getColors(product) {
-    return product.variants.map((variant, i) => <Color color={variant.color} key={i} />)
+  static getColors(product) {
+    return product.variants.map(variant => <Color color={variant.color} key={variant['_id']} />);
   }
 
-  getSizes(product) {
-    let uniqueSizes = product.variants.reduce((accum, currentVariant) => {
-      let currentSize = currentVariant.size;
+  static getSizes(product) {
+    const uniqueSizes = product.variants.reduce((accum, currentVariant) => {
+      const currentSize = currentVariant.size;
       return accum.concat(!accum.includes(currentSize) ? currentSize : []);
     }, []);
 
     const sizeOptions = ['XS', 'S', 'M', 'L', 'XL'];
-    let sortedUniqueSizes = uniqueSizes.sort((a, b) => {
-      return sizeOptions.indexOf(a) - sizeOptions.indexOf(b);
-    });
+    const sorted = uniqueSizes.sort((a, b) => sizeOptions.indexOf(a) - sizeOptions.indexOf(b));
 
-    return sortedUniqueSizes.map((uniqueSize, i) => <Size size={uniqueSize} key={i} />)
+    return sorted.map(uniqueSize => <Size size={uniqueSize} key={uniqueSize} />);
   }
 
   render() {
+    const {
+      product,
+      variant,
+      colors,
+      sizes,
+    } = this.state;
+
     return (
       <div className="productOptions">
-        <div className="brand"><a href="#">{this.state.product.brand}</a></div>
-        <div className="title">{this.state.product.title}</div>
-        <div className="itemId">Item #{this.state.product.itemId}</div>
+        <div className="brand"><a href="/">{product.brand}</a></div>
+        <div className="title">{product.title}</div>
+        <div className="itemId">
+          Item #
+          {product.itemId}
+        </div>
         <div className="rating">
-          <Stars rating={this.state.product.averageRating} />
-          {this.state.product.averageRating} ({this.state.product.reviewCount})
+          <Stars rating={product.averageRating} />
+          {product.averageRating}
+          (
+          {product.reviewCount}
+          )
         </div>
-        <div className="price">${this.state.variant.price}</div>
-        <div className="freeShipping" style={{display: this.state.product.freeShipping ? 'block' : 'none'}}>
-          <a href="#"><i className="fas fa-truck"></i>This item ships for FREE!</a>
+        <div className="price">
+          $
+          {variant.price}
         </div>
-        <div className="colors">{this.state.colors}</div>
+        <div className="freeShipping" style={{ display: product.freeShipping ? 'block' : 'none' }}>
+          <a href="/">
+            <i className="fas fa-truck" />
+            This item ships for FREE!
+          </a>
+        </div>
+        <div className="colors">{colors}</div>
         <div className="sizes">
-          <label htmlFor="size-select">Size</label>
+          Size
           <select id="size-select">
-            {this.state.sizes}
+            {sizes}
           </select>
         </div>
       </div>
     );
   }
 }
+
 export default ProductOptions;

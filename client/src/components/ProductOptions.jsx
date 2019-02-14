@@ -5,6 +5,7 @@ import Title from './Title';
 import ItemId from './ItemId';
 import Rating from './Rating';
 import Price from './Price';
+import FreeShipping from './FreeShipping';
 import Color from './Color';
 import Size from './Size';
 
@@ -72,12 +73,7 @@ class ProductOptions extends React.Component {
         <ItemId itemId={product.itemId} />
         <Rating averageRating={product.averageRating} reviewCount={product.reviewCount} />
         <Price price={variant.price} />
-        <div className="freeShipping-wrapper" style={{ display: product.freeShipping ? 'block' : 'none' }}>
-          <a href="/">
-            <i className="fas fa-truck" />
-            This item ships for FREE!
-          </a>
-        </div>
+        <FreeShipping freeShipping={product.freeShipping} />
         <div className="colors-wrapper">{colors}</div>
         <div className="sizes-wrapper">
           Size

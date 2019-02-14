@@ -10,6 +10,7 @@ import Colors from './Colors';
 import Color from './Color';
 import Sizes from './Sizes';
 import Size from './Size';
+import Quantity from './Quantity';
 
 class ProductOptions extends React.Component {
   constructor() {
@@ -78,12 +79,7 @@ class ProductOptions extends React.Component {
         <FreeShipping freeShipping={product.freeShipping} />
         <Colors colors={colors} />
         <Sizes sizes={sizes} />
-        <div className="quantity-wrapper">
-          Quantity
-          <button type="button">-</button>
-          <input id="quantity-input" />
-          <button type="button">+</button>
-        </div>
+        <Quantity />
       </div>
     );
   }

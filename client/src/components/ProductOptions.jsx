@@ -3,7 +3,7 @@ import axios from 'axios';
 import Brand from './Brand';
 import Title from './Title';
 import ItemId from './ItemId';
-import Stars from './Stars';
+import Rating from './Rating';
 import Color from './Color';
 import Size from './Size';
 
@@ -69,13 +69,7 @@ class ProductOptions extends React.Component {
         <Brand brand={product.brand} />
         <Title title={product.title} />
         <ItemId itemId={product.itemId} />
-        <div className="rating-wrapper">
-          <Stars rating={product.averageRating} />
-          {product.averageRating}
-          (
-          {product.reviewCount}
-          )
-        </div>
+        <Rating averageRating={product.averageRating} reviewCount={product.reviewCount} />
         <div className="price-wrapper">
           $
           {variant.price}

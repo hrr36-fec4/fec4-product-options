@@ -3,10 +3,13 @@ import PropTypes from 'prop-types';
 
 const Sizes = ({ sizes }) => (
   <div className="sizes-wrapper">
-    Size
-    <select id="size-select">
-      {sizes}
-    </select>
+    <span>Size</span>
+    <a href="/">Size Chart</a>
+    <div>
+      <select id="size-select">
+        {sizes}
+      </select>
+    </div>
   </div>
 );
 

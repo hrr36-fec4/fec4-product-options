@@ -46,8 +46,22 @@ a {
   margin-right: 10px;
 }
 
-.quantity-wrapper button {
+.sizes-wrapper {
+  display: inline-block;
+  width: 130px;
+}
 
+.sizes-wrapper a {
+  float: right;
+}
+
+.sizes-wrapper select {
+  width: 100%;
+}
+
+.quantity-wrapper {
+  display: inline-block;
+  float: right;
 }
 
 #quantity-input {

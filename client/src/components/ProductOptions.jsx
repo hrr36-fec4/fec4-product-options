@@ -12,6 +12,7 @@ import Sizes from './Sizes';
 import Size from './Size';
 import Quantity from './Quantity';
 import ShippingRestriction from './ShippingRestriction';
+import ShippingOptions from './ShippingOptions';
 
 class ProductOptions extends React.Component {
   constructor() {
@@ -82,6 +83,8 @@ class ProductOptions extends React.Component {
         <Sizes sizes={sizes} />
         <Quantity />
         <ShippingRestriction shippingRestriction={product.shippingRestriction} />
+        <hr />
+        <ShippingOptions />
       </div>
     );
   }

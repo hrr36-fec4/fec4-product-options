@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import Brand from './Brand';
 import Stars from './Stars';
 import Color from './Color';
 import Size from './Size';
@@ -63,7 +64,7 @@ class ProductOptions extends React.Component {
 
     return (
       <div className="productOptions">
-        <div className="brand-wrapper"><a href="/">{product.brand}</a></div>
+        <Brand brand={product.brand} />
         <div className="title-wrapper">{product.title}</div>
         <div className="itemId-warpper">
           Item #

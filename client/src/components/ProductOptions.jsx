@@ -8,6 +8,7 @@ import Price from './Price';
 import FreeShipping from './FreeShipping';
 import Colors from './Colors';
 import Color from './Color';
+import Sizes from './Sizes';
 import Size from './Size';
 
 class ProductOptions extends React.Component {
@@ -76,12 +77,7 @@ class ProductOptions extends React.Component {
         <Price price={variant.price} />
         <FreeShipping freeShipping={product.freeShipping} />
         <Colors colors={colors} />
-        <div className="sizes-wrapper">
-          Size
-          <select id="size-select">
-            {sizes}
-          </select>
-        </div>
+        <Sizes sizes={sizes} />
         <div className="quantity-wrapper">
           Quantity
           <button type="button">-</button>

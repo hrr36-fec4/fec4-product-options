@@ -1,8 +1,17 @@
 import React from 'react';
 import axios from 'axios';
-import Stars from './Stars';
+import Brand from './Brand';
+import Title from './Title';
+import ItemId from './ItemId';
+import Rating from './Rating';
+import Price from './Price';
+import FreeShipping from './FreeShipping';
+import Colors from './Colors';
 import Color from './Color';
+import Sizes from './Sizes';
 import Size from './Size';
+import Quantity from './Quantity';
+import ShippingRestriction from './ShippingRestriction';
 
 class ProductOptions extends React.Component {
   constructor() {
@@ -63,36 +72,16 @@ class ProductOptions extends React.Component {
 
     return (
       <div className="productOptions">
-        <div className="brand"><a href="/">{product.brand}</a></div>
-        <div className="title">{product.title}</div>
-        <div className="itemId">
-          Item #
-          {product.itemId}
-        </div>
-        <div className="rating">
-          <Stars rating={product.averageRating} />
-          {product.averageRating}
-          (
-          {product.reviewCount}
-          )
-        </div>
-        <div className="price">
-          $
-          {variant.price}
-        </div>
-        <div className="freeShipping" style={{ display: product.freeShipping ? 'block' : 'none' }}>
-          <a href="/">
-            <i className="fas fa-truck" />
-            This item ships for FREE!
-          </a>
-        </div>
-        <div className="colors">{colors}</div>
-        <div className="sizes">
-          Size
-          <select id="size-select">
-            {sizes}
-          </select>
-        </div>
+        <Brand brand={product.brand} />
+        <Title title={product.title} />
+        <ItemId itemId={product.itemId} />
+        <Rating averageRating={product.averageRating} reviewCount={product.reviewCount} />
+        <Price price={variant.price} />
+        <FreeShipping freeShipping={product.freeShipping} />
+        <Colors colors={colors} />
+        <Sizes sizes={sizes} />
+        <Quantity />
+        <ShippingRestriction shippingRestriction={product.shippingRestriction} />
       </div>
     );
   }

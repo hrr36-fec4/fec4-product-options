@@ -1,37 +1,42 @@
 .productOptions {
-  width: 400px;
+  width: 340px;
   font-family: 'Roboto', sans-serif;
+  color: #bf5b00;
+  font-size: 16px;
+  font-weight: 400;
 }
 
-.brand a {
-  font-size: 16px;
+a {
   color: #347cb1;
   text-decoration: none;
 }
 
-.title {
+.title-wrapper {
   font-family: Domine, serif;
   font-size: 28px;
-  font-weight: 400;
+  color: #2e2e2e;
 }
 
-.itemId {
+.itemId-wrapper {
   font-family: 'Roboto Condensed', sans-serif;
-  font-size: 16px;
-  font-weight: 400;
   float: right;
+  color: #2e2e2e;
+}
+
+.rating-wrapper {
+  color: #2e2e2e;
 }
 
 .stars {
   display: inline-block;
-  color: #bf5b00;
   margin-right: 10px;
+  color: #bf5b00;
 }
 
-.price {
+.price-wrapper {
   font-family: Domine, serif;
   font-size: 20px;
-  font-weight: 400;
+  color: #2e2e2e;
 }
 
 .color {
@@ -39,4 +44,38 @@
   height: 50px;
   width: 50px;
   margin-right: 10px;
+}
+
+.sizes-wrapper {
+  display: inline-block;
+  width: 130px;
+}
+
+.sizes-wrapper a {
+  float: right;
+}
+
+.sizes-wrapper select {
+  width: 100%;
+}
+
+.quantity-wrapper {
+  display: inline-block;
+  float: right;
+}
+
+#quantity-input {
+  width: 30px;
+  height: 30px;
+  padding: 5px;
+  border: 1px solid #c5c5c5;
+  border-radius: 3px;
+}
+
+.shippingRestriction-wrapper {
+  margin-top: 20px;
+  border: 1px solid #bf5b00;
+  width: 100%;
+  padding: 10px;
+  background-color: #FFF8DB;
 }

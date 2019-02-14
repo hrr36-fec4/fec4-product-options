@@ -6,6 +6,7 @@ import ItemId from './ItemId';
 import Rating from './Rating';
 import Price from './Price';
 import FreeShipping from './FreeShipping';
+import Colors from './Colors';
 import Color from './Color';
 import Size from './Size';
 
@@ -74,7 +75,7 @@ class ProductOptions extends React.Component {
         <Rating averageRating={product.averageRating} reviewCount={product.reviewCount} />
         <Price price={variant.price} />
         <FreeShipping freeShipping={product.freeShipping} />
-        <div className="colors-wrapper">{colors}</div>
+        <Colors colors={colors} />
         <div className="sizes-wrapper">
           Size
           <select id="size-select">

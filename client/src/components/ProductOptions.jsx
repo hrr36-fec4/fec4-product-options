@@ -63,35 +63,41 @@ class ProductOptions extends React.Component {
 
     return (
       <div className="productOptions">
-        <div className="brand"><a href="/">{product.brand}</a></div>
-        <div className="title">{product.title}</div>
-        <div className="itemId">
+        <div className="brand-wrapper"><a href="/">{product.brand}</a></div>
+        <div className="title-wrapper">{product.title}</div>
+        <div className="itemId-warpper">
           Item #
           {product.itemId}
         </div>
-        <div className="rating">
+        <div className="rating-wrapper">
           <Stars rating={product.averageRating} />
           {product.averageRating}
           (
           {product.reviewCount}
           )
         </div>
-        <div className="price">
+        <div className="price-wrapper">
           $
           {variant.price}
         </div>
-        <div className="freeShipping" style={{ display: product.freeShipping ? 'block' : 'none' }}>
+        <div className="freeShipping-wrapper" style={{ display: product.freeShipping ? 'block' : 'none' }}>
           <a href="/">
             <i className="fas fa-truck" />
             This item ships for FREE!
           </a>
         </div>
-        <div className="colors">{colors}</div>
-        <div className="sizes">
+        <div className="colors-wrapper">{colors}</div>
+        <div className="sizes-wrapper">
           Size
           <select id="size-select">
             {sizes}
           </select>
+        </div>
+        <div className="quantity-wrapper">
+          Quantity
+          <button type="button">-</button>
+          <input id="quantity-input" />
+          <button type="button">+</button>
         </div>
       </div>
     );

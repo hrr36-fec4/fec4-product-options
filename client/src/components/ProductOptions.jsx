@@ -11,6 +11,7 @@ import Color from './Color';
 import Sizes from './Sizes';
 import Size from './Size';
 import Quantity from './Quantity';
+import ShippingRestriction from './ShippingRestriction';
 
 class ProductOptions extends React.Component {
   constructor() {
@@ -80,6 +81,7 @@ class ProductOptions extends React.Component {
         <Colors colors={colors} />
         <Sizes sizes={sizes} />
         <Quantity />
+        <ShippingRestriction shippingRestriction={product.shippingRestriction} />
       </div>
     );
   }

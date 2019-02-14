@@ -1,5 +1,5 @@
 .productOptions {
-  width: 400px;
+  width: 340px;
   font-family: 'Roboto', sans-serif;
   color: #bf5b00;
   font-size: 16px;
@@ -70,4 +70,12 @@ a {
   padding: 5px;
   border: 1px solid #c5c5c5;
   border-radius: 3px;
+}
+
+.shippingRestriction-wrapper {
+  margin-top: 20px;
+  border: 1px solid #bf5b00;
+  width: 100%;
+  padding: 10px;
+  background-color: #FFF8DB;
 }

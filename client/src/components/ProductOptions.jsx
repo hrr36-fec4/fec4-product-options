@@ -4,6 +4,7 @@ import Brand from './Brand';
 import Title from './Title';
 import ItemId from './ItemId';
 import Rating from './Rating';
+import Price from './Price';
 import Color from './Color';
 import Size from './Size';
 
@@ -70,10 +71,7 @@ class ProductOptions extends React.Component {
         <Title title={product.title} />
         <ItemId itemId={product.itemId} />
         <Rating averageRating={product.averageRating} reviewCount={product.reviewCount} />
-        <div className="price-wrapper">
-          $
-          {variant.price}
-        </div>
+        <Price price={variant.price} />
         <div className="freeShipping-wrapper" style={{ display: product.freeShipping ? 'block' : 'none' }}>
           <a href="/">
             <i className="fas fa-truck" />

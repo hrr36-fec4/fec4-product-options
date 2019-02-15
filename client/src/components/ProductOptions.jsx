@@ -14,6 +14,7 @@ import Quantity from './Quantity';
 import ShippingRestriction from './ShippingRestriction';
 import ShippingOptions from './ShippingOptions';
 import AddTo from './AddTo';
+import ReturnPolicy from './ReturnPolicy';
 
 class ProductOptions extends React.Component {
   constructor() {
@@ -87,6 +88,7 @@ class ProductOptions extends React.Component {
         <hr />
         <ShippingOptions />
         <AddTo />
+        <ReturnPolicy />
       </div>
     );
   }

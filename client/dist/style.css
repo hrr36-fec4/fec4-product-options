@@ -79,3 +79,43 @@ a {
   padding: 10px;
   background-color: #FFF8DB;
 }
+
+.shippingOptions-wrapper {
+  margin: 15px 0;
+}
+
+.addTo-wrapper button {
+  width: 100%;
+  font-size: 16px;
+}
+
+#add-to-cart {
+  color: #ffffff;
+  background-color: #426C90;
+  border-color: #426C90;
+  padding: 16px 32px;
+}
+
+#add-to-cart:hover {
+  background-color: #2B455C;
+  border-color: #2B455C;
+  cursor: pointer;
+}
+
+#add-to-wish-list {
+  margin-top: 10px;
+  padding: 12px 16px;
+  color: #2e2e2e;
+  background-color: #ffffff;
+  border-color: #c5c5c5;
+}
+
+#add-to-wish-list:hover {
+  background-color: #f0f0f0;
+  cursor: pointer;
+}
+
+.returnPolicy-wrapper {
+  text-align: center;
+  padding: 20px 0;
+}

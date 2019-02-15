@@ -5,10 +5,17 @@ import Stars from './Stars';
 const Rating = ({ averageRating, reviewCount }) => (
   <div className="rating-wrapper">
     <Stars rating={averageRating} />
-    {averageRating}
-    (
-    {reviewCount}
-    )
+    <span className="average-rating">
+      <a href="/">{averageRating}</a>
+    </span>
+    &nbsp;
+    <span className="review-count">
+      <a href="/">
+        (
+        {reviewCount}
+        )
+      </a>
+    </span>
   </div>
 );
 

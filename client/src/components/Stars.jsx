@@ -17,7 +17,7 @@ const Stars = ({ rating }) => {
     num -= 1;
   }
 
-  return <div className="stars">{stars}</div>;
+  return <div className="stars"><a href="/">{stars}</a></div>;
 };
 
 Stars.propTypes = {

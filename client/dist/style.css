@@ -25,6 +25,7 @@ a {
 
 .rating-wrapper {
   color: #2e2e2e;
+  display: inline-block;
 }
 
 .stars {

@@ -4,7 +4,7 @@ const ShippingOptions = () => (
   <div className="shippingOptions-wrapper">
     <div>
       <label htmlFor="ship-to-address">
-        <input type="radio" id="ship-to-address" name="shipping-option" checked />
+        <input type="radio" id="ship-to-address" name="shipping-option" defaultChecked />
         Ship to address
       </label>
     </div>

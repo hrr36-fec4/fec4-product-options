@@ -1,7 +1,7 @@
 .productOptions {
   width: 340px;
   font-family: 'Roboto', sans-serif;
-  color: #bf5b00;
+  color: #222;
   font-size: 16px;
   font-weight: 400;
 }
@@ -55,6 +55,7 @@ a {
   font-family: Domine, serif;
   font-size: 20px;
   color: #2e2e2e;
+  margin-bottom: 10px;
 }
 
 .freeShipping-wrapper {
@@ -71,13 +72,18 @@ a {
 .sizes-wrapper {
   display: inline-block;
   width: 130px;
+  margin-top: 10px;
 }
 
 .sizes-wrapper a {
   float: right;
 }
 
-.sizes-wrapper select {
+.size-select-wrapper {
+  margin-bottom: 10px;
+}
+
+#size-select {
   width: 100%;
 }
 
@@ -86,9 +92,19 @@ a {
   float: right;
 }
 
+.quantity-wrapper button {
+  border-radius: 10px;
+  padding: 3px 5px;
+}
+
+.quantity-label {
+  margin-bottom: 6px;
+}
+
 #quantity-input {
   width: 30px;
   height: 30px;
+  margin: 0 5px;
   padding: 5px;
   border: 1px solid #c5c5c5;
   border-radius: 3px;
@@ -97,13 +113,21 @@ a {
 .shippingRestriction-wrapper {
   margin-top: 20px;
   border: 1px solid #bf5b00;
-  width: 100%;
   padding: 10px;
   background-color: #FFF8DB;
 }
 
+hr {
+  margin: 24px 0;
+}
+
 .shippingOptions-wrapper {
   margin: 15px 0;
+}
+
+.radio-wrapper {
+  margin-bottom: 10px;
+  font-weight: bold;
 }
 
 .addTo-wrapper button {

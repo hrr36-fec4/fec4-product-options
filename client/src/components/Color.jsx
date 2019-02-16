@@ -1,13 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Color = ({ color, handleColorClick }) => {
+const Color = ({ color, handleColorClick, selected }) => {
+  const classes = `color ${selected ? 'selected' : ''}`;
+
   const style = {
     backgroundColor: color,
   };
 
   return (
-    <div className="color" style={style} onClick={() => handleColorClick(color)} />
+    <div className={classes} style={style} onClick={() => handleColorClick(color)} />
   );
 };
 

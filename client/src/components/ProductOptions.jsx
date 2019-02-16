@@ -21,12 +21,14 @@ class ProductOptions extends React.Component {
     super();
     this.state = {
       product: {},
-      variant: {},
+      selectedVariant: {},
       colors: [],
       sizes: [],
     };
 
     this.getRandomProduct = this.getRandomProduct.bind(this);
+    this.renderColors = this.renderColors.bind(this);
+    this.renderSizes = this.renderSizes.bind(this);
     this.handleColorClick = this.handleColorClick.bind(this);
     this.updateVariant = this.updateVariant.bind(this);
   }
@@ -41,23 +43,42 @@ class ProductOptions extends React.Component {
         const randomProduct = response.data;
         const randomIndex = Math.floor(Math.random() * randomProduct.variants.length);
         const randomVariant = randomProduct.variants[randomIndex];
-        const productColors = this.getColors(randomProduct);
-        const productSizes = this.constructor.getSizes(randomProduct);
 
         this.setState({
           product: randomProduct,
-          variant: randomVariant,
-          colors: productColors,
-          sizes: productSizes,
+          selectedVariant: randomVariant,
+        }, () => {
+          this.setState({
+            colors: this.renderColors(),
+            sizes: this.renderSizes(),
+          });
         });
       });
   }
 
-  getColors(product) {
-    return product.variants.map(variant => <Color color={variant.color} key={variant['_id']} handleColorClick={this.handleColorClick} />);
+  handleColorClick(color) {
+    const { product } = this.state;
+    const variantClicked = product.variants.filter(variant => variant.color === color)[0];
+    this.updateVariant(variantClicked);
   }
 
-  static getSizes(product) {
+  updateVariant(variant) {
+    this.setState({ selectedVariant: variant }, () => {
+      this.setState({ colors: this.renderColors() });
+    });
+  }
+
+  renderColors() {
+    const { product, selectedVariant } = this.state;
+    return product.variants.map((variant) => {
+      const isSelected = variant['_id'] === selectedVariant['_id'];
+
+      return <Color color={variant.color} key={variant['_id']} handleColorClick={this.handleColorClick} selected={isSelected} />;
+    });
+  }
+
+  renderSizes() {
+    const { product } = this.state;
     const uniqueSizes = product.variants.reduce((accum, currentVariant) => {
       const currentSize = currentVariant.size;
       return accum.concat(!accum.includes(currentSize) ? currentSize : []);
@@ -69,22 +90,10 @@ class ProductOptions extends React.Component {
     return sorted.map(uniqueSize => <Size size={uniqueSize} key={uniqueSize} />);
   }
 
-  handleColorClick(color) {
-    const { product } = this.state;
-    const variantClicked = product.variants.filter(variant => variant.color === color)[0];
-    this.updateVariant(variantClicked);
-  }
-
-  updateVariant(variant) {
-    this.setState({
-      variant,
-    });
-  }
-
   render() {
     const {
       product,
-      variant,
+      selectedVariant,
       colors,
       sizes,
     } = this.state;
@@ -95,7 +104,7 @@ class ProductOptions extends React.Component {
         <Title title={product.title} />
         <ItemId itemId={product.itemId} />
         <Rating averageRating={product.averageRating} reviewCount={product.reviewCount} />
-        <Price price={variant.price} />
+        <Price price={selectedVariant.price} />
         <FreeShipping freeShipping={product.freeShipping} />
         <Colors colors={colors} handleColorClick={this.handleColorClick} />
         <Sizes sizes={sizes} />

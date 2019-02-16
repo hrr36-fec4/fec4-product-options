@@ -70,6 +70,10 @@ a {
   margin-right: 10px;
 }
 
+.selected {
+  border: 2px solid black;
+}
+
 .sizes-wrapper {
   display: inline-block;
   width: 130px;

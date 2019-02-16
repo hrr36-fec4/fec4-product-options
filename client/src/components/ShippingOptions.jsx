@@ -2,16 +2,16 @@ import React from 'react';
 
 const ShippingOptions = () => (
   <div className="shippingOptions-wrapper">
-    <div>
+    <div className="radio-wrapper">
       <label htmlFor="ship-to-address">
         <input type="radio" id="ship-to-address" name="shipping-option" defaultChecked />
-        Ship to address
+        &nbsp;&nbsp;Ship to address
       </label>
     </div>
-    <div>
+    <div className="radio-wrapper">
       <label htmlFor="pick-up">
         <input type="radio" id="pick-up" name="shipping-option" />
-        Pick up in store - Free
+        &nbsp;&nbsp;Pick up in store - Free
       </label>
     </div>
     <a href="/">Find a store near you</a>

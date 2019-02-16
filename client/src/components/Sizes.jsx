@@ -5,7 +5,7 @@ const Sizes = ({ sizes }) => (
   <div className="sizes-wrapper">
     <span>Size</span>
     <a href="/">Size Chart</a>
-    <div>
+    <div className="size-select-wrapper">
       <select id="size-select">
         {sizes}
       </select>

@@ -20,6 +20,13 @@ describe('generateFakeVariants', () => {
     const props = Object.keys(fakeVariant);
     expect(props).toEqual(['itemId', 'price', 'color', 'size']);
   });
+
+  test('should return an array of Variant objects whose colors are unique', () => {
+    const fakeVariants = utils.generateFakeVariants('123456');
+    const colors = fakeVariants.map(variant => variant.color);
+    const set = new Set(colors);
+    expect(colors.length).toBe(set.size);
+  });
 });
 
 describe('generateFakeProduct', () => {

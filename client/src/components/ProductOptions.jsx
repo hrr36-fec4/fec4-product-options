@@ -27,6 +27,8 @@ class ProductOptions extends React.Component {
     };
 
     this.getRandomProduct = this.getRandomProduct.bind(this);
+    this.handleColorClick = this.handleColorClick.bind(this);
+    this.updateVariant = this.updateVariant.bind(this);
   }
 
   componentDidMount() {
@@ -39,18 +41,20 @@ class ProductOptions extends React.Component {
         const randomProduct = response.data;
         const randomIndex = Math.floor(Math.random() * randomProduct.variants.length);
         const randomVariant = randomProduct.variants[randomIndex];
+        const productColors = this.getColors(randomProduct);
+        const productSizes = this.constructor.getSizes(randomProduct);
 
         this.setState({
           product: randomProduct,
           variant: randomVariant,
-          colors: this.constructor.getColors(randomProduct),
-          sizes: this.constructor.getSizes(randomProduct),
+          colors: productColors,
+          sizes: productSizes,
         });
       });
   }
 
-  static getColors(product) {
-    return product.variants.map(variant => <Color color={variant.color} key={variant['_id']} />);
+  getColors(product) {
+    return product.variants.map(variant => <Color color={variant.color} key={variant['_id']} handleColorClick={this.handleColorClick} />);
   }
 
   static getSizes(product) {
@@ -63,6 +67,18 @@ class ProductOptions extends React.Component {
     const sorted = uniqueSizes.sort((a, b) => sizeOptions.indexOf(a) - sizeOptions.indexOf(b));
 
     return sorted.map(uniqueSize => <Size size={uniqueSize} key={uniqueSize} />);
+  }
+
+  handleColorClick(color) {
+    const { product } = this.state;
+    const variantClicked = product.variants.filter(variant => variant.color === color)[0];
+    this.updateVariant(variantClicked);
+  }
+
+  updateVariant(variant) {
+    this.setState({
+      variant,
+    });
   }
 
   render() {
@@ -81,7 +97,7 @@ class ProductOptions extends React.Component {
         <Rating averageRating={product.averageRating} reviewCount={product.reviewCount} />
         <Price price={variant.price} />
         <FreeShipping freeShipping={product.freeShipping} />
-        <Colors colors={colors} />
+        <Colors colors={colors} handleColorClick={this.handleColorClick} />
         <Sizes sizes={sizes} />
         <Quantity />
         <ShippingRestriction shippingRestriction={product.shippingRestriction} />

@@ -21,12 +21,16 @@ class ProductOptions extends React.Component {
     super();
     this.state = {
       product: {},
-      variant: {},
+      selectedVariant: {},
       colors: [],
       sizes: [],
     };
 
     this.getRandomProduct = this.getRandomProduct.bind(this);
+    this.renderColors = this.renderColors.bind(this);
+    this.renderSizes = this.renderSizes.bind(this);
+    this.handleColorClick = this.handleColorClick.bind(this);
+    this.updateVariant = this.updateVariant.bind(this);
   }
 
   componentDidMount() {
@@ -42,18 +46,39 @@ class ProductOptions extends React.Component {
 
         this.setState({
           product: randomProduct,
-          variant: randomVariant,
-          colors: this.constructor.getColors(randomProduct),
-          sizes: this.constructor.getSizes(randomProduct),
+          selectedVariant: randomVariant,
+        }, () => {
+          this.setState({
+            colors: this.renderColors(),
+            sizes: this.renderSizes(),
+          });
         });
       });
   }
 
-  static getColors(product) {
-    return product.variants.map(variant => <Color color={variant.color} key={variant['_id']} />);
+  handleColorClick(color) {
+    const { product } = this.state;
+    const variantClicked = product.variants.filter(variant => variant.color === color)[0];
+    this.updateVariant(variantClicked);
   }
 
-  static getSizes(product) {
+  updateVariant(variant) {
+    this.setState({ selectedVariant: variant }, () => {
+      this.setState({ colors: this.renderColors() });
+    });
+  }
+
+  renderColors() {
+    const { product, selectedVariant } = this.state;
+    return product.variants.map((variant) => {
+      const isSelected = variant['_id'] === selectedVariant['_id'];
+
+      return <Color color={variant.color} key={variant['_id']} handleColorClick={this.handleColorClick} selected={isSelected} />;
+    });
+  }
+
+  renderSizes() {
+    const { product } = this.state;
     const uniqueSizes = product.variants.reduce((accum, currentVariant) => {
       const currentSize = currentVariant.size;
       return accum.concat(!accum.includes(currentSize) ? currentSize : []);
@@ -68,7 +93,7 @@ class ProductOptions extends React.Component {
   render() {
     const {
       product,
-      variant,
+      selectedVariant,
       colors,
       sizes,
     } = this.state;
@@ -79,9 +104,9 @@ class ProductOptions extends React.Component {
         <Title title={product.title} />
         <ItemId itemId={product.itemId} />
         <Rating averageRating={product.averageRating} reviewCount={product.reviewCount} />
-        <Price price={variant.price} />
+        <Price price={selectedVariant.price} />
         <FreeShipping freeShipping={product.freeShipping} />
-        <Colors colors={colors} />
+        <Colors colors={colors} handleColorClick={this.handleColorClick} />
         <Sizes sizes={sizes} />
         <Quantity />
         <ShippingRestriction shippingRestriction={product.shippingRestriction} />

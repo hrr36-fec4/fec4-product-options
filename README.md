@@ -1,6 +1,6 @@
 # HRR36 FEC Team 4 - Product Options
 
-> This repo includes the Product Options service of Team 4's Front End Capstone project.
+This repo includes the Product Options service of Team 4's Front End Capstone project.
 
 ## Related Projects
 
@@ -15,7 +15,11 @@
 
 ## Usage
 
-> Some usage instructions
+1. Ensure that MongoDB is installed and running on your computer (`mongod`).
+2. [Install the project's dependencies](#installing-dependencies).
+3. Open three terminal tabs for each of these processes: `mongod`, `npm run dev:react`, and `npm start`.
+4. Run tests with `npm test`.
+5. Navigate to `http://localhost:3001` to view the service.
 
 ## Requirements
 
@@ -34,4 +38,3 @@ From within the root directory:
 npm install -g webpack
 npm install
 ```
-

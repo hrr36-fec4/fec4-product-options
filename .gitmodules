@@ -1,0 +1,9 @@
+[submodule "fec4-product-options"]
+	path = fec4-product-options
+	url = https://github.com/hrr36-fec4/fec4-product-options.git
+[submodule "fec4-reviews"]
+	path = fec4-reviews
+	url = https://github.com/hrr36-fec4/fec4-reviews.git
+[submodule "fec4-related-items-and-size-chart"]
+	path = fec4-related-items-and-size-chart
+	url = https://github.com/hrr36-fec4/fec4-related-items-and-size-chart.git

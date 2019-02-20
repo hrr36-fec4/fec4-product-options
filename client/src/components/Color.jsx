@@ -9,18 +9,20 @@ const Color = ({ color, handleColorClick, selected }) => {
   };
 
   return (
-    <div className={classes} style={style} onClick={() => handleColorClick(color)} />
+    <div className={classes} style={style} onClick={() => handleColorClick(color)} onKeyPress={() => {}} role="button" tabIndex="0" />
   );
 };
 
 Color.propTypes = {
   color: PropTypes.string,
   handleColorClick: PropTypes.func,
+  selected: PropTypes.bool,
 };
 
 Color.defaultProps = {
   color: '',
   handleColorClick: () => {},
+  selected: false,
 };
 
 export default Color;

@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 
-const mongoUri = 'mongodb://localhost/hrei';
+const mongoUri = 'mongodb://localhost/hrei-product-options';
 
-mongoose.connect(mongoUri, { useNewUrlParser: true });
+mongoose.connect(mongoUri, { useNewUrlParser: true, useCreateIndex: true });
 const db = mongoose.connection;
 
 module.exports = db;

@@ -1,4 +1,4 @@
-.productOptions {
+#product-options .productOptions {
   width: 340px;
   font-family: 'Roboto', sans-serif;
   color: #222;
@@ -6,107 +6,107 @@
   font-weight: 400;
 }
 
-a {
+#product-options a {
   color: #347cb1;
   text-decoration: none;
 }
 
-.brand-wrapper {
+#product-options .brand-wrapper {
   font-weight: 700;
 }
 
-.title-wrapper {
+#product-options .title-wrapper {
   font-family: Domine, serif;
   font-size: 28px;
   color: #2e2e2e;
   margin-bottom: 10px;
 }
 
-.itemId-wrapper {
+#product-options .itemId-wrapper {
   font-family: 'Roboto Condensed', sans-serif;
   float: right;
   color: #2e2e2e;
 }
 
-.rating-wrapper {
+#product-options .rating-wrapper {
   color: #2e2e2e;
   display: inline-block;
   margin-bottom: 5px;
   font-size: 14px;
 }
 
-.rating-wrapper a {
+#product-options .rating-wrapper a {
   color: #2e2e2e;
 }
 
-.rating-wrapper a:hover {
+#product-options .rating-wrapper a:hover {
   text-decoration: underline;
 }
 
-.stars {
+#product-options .stars {
   display: inline-block;
   margin-right: 10px;
 }
 
-.stars i {
+#product-options .stars i {
   color: #bf5b00;
 }
 
-.price-wrapper {
+#product-options .price-wrapper {
   font-family: Domine, serif;
   font-size: 20px;
   color: #2e2e2e;
   margin-bottom: 10px;
 }
 
-.freeShipping-wrapper {
+#product-options .freeShipping-wrapper {
   margin: 27px 0;
 }
 
-.color {
+#product-options .color {
   display: inline-block;
   height: 50px;
   width: 50px;
   margin-right: 10px;
 }
 
-.selected {
+#product-options .selected {
   border: 2px solid black;
 }
 
-.sizes-wrapper {
+#product-options .sizes-wrapper {
   display: inline-block;
   width: 130px;
   margin-top: 10px;
 }
 
-.sizes-wrapper a {
+#product-options .sizes-wrapper a {
   float: right;
 }
 
-.size-select-wrapper {
+#product-options .size-select-wrapper {
   margin-bottom: 10px;
 }
 
-#size-select {
+#product-options #size-select {
   width: 100%;
 }
 
-.quantity-wrapper {
+#product-options .quantity-wrapper {
   display: inline-block;
   float: right;
 }
 
-.quantity-wrapper button {
+#product-options .quantity-wrapper button {
   border-radius: 10px;
   padding: 3px 5px;
 }
 
-.quantity-label {
+#product-options .quantity-label {
   margin-bottom: 6px;
 }
 
-#quantity-input {
+#product-options #quantity-input {
   width: 30px;
   height: 30px;
   margin: 0 5px;
@@ -115,45 +115,45 @@ a {
   border-radius: 3px;
 }
 
-.shippingRestriction-wrapper {
+#product-options .shippingRestriction-wrapper {
   margin-top: 20px;
   border: 1px solid #bf5b00;
   padding: 10px;
   background-color: #FFF8DB;
 }
 
-hr {
+#product-options hr {
   margin: 24px 0;
 }
 
-.shippingOptions-wrapper {
+#product-options .shippingOptions-wrapper {
   margin: 15px 0;
 }
 
-.radio-wrapper {
+#product-options .radio-wrapper {
   margin-bottom: 10px;
   font-weight: bold;
 }
 
-.addTo-wrapper button {
+#product-options .addTo-wrapper button {
   width: 100%;
   font-size: 16px;
 }
 
-#add-to-cart {
+#product-options #add-to-cart {
   color: #ffffff;
   background-color: #426C90;
   border-color: #426C90;
   padding: 16px 32px;
 }
 
-#add-to-cart:hover {
+#product-options #add-to-cart:hover {
   background-color: #2B455C;
   border-color: #2B455C;
   cursor: pointer;
 }
 
-#add-to-wish-list {
+#product-options #add-to-wish-list {
   margin-top: 10px;
   padding: 12px 16px;
   color: #2e2e2e;
@@ -161,12 +161,12 @@ hr {
   border-color: #c5c5c5;
 }
 
-#add-to-wish-list:hover {
+#product-options #add-to-wish-list:hover {
   background-color: #f0f0f0;
   cursor: pointer;
 }
 
-.returnPolicy-wrapper {
+#product-options .returnPolicy-wrapper {
   text-align: center;
   padding: 20px 0;
 }

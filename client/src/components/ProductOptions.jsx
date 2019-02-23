@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import path from 'path';
 import Brand from './Brand';
 import Title from './Title';
 import ItemId from './ItemId';
@@ -15,6 +16,7 @@ import ShippingRestriction from './ShippingRestriction';
 import ShippingOptions from './ShippingOptions';
 import AddTo from './AddTo';
 import ReturnPolicy from './ReturnPolicy';
+
 
 class ProductOptions extends React.Component {
   constructor() {
@@ -38,7 +40,7 @@ class ProductOptions extends React.Component {
   }
 
   getRandomProduct() {
-    axios.get('http://localhost:3001/products/random')
+    axios.get(path.join('products', 'random'))
       .then((response) => {
         const randomProduct = response.data;
         const randomIndex = Math.floor(Math.random() * randomProduct.variants.length);

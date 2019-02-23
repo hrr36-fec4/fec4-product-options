@@ -9,7 +9,7 @@
     "node": ">=6.13.0"
   },
   "scripts": {
-    "start": "nodemon server/index.js",
+    "start": "node server/index.js",
     "test": "jest",
     "dev:react": "webpack -d --watch",
     "build": "webpack --mode production",

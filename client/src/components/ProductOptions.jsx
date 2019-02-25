@@ -40,7 +40,7 @@ class ProductOptions extends React.Component {
   }
 
   getRandomProduct() {
-    axios.get(path.join('products', 'random'))
+    axios.get('http://dev-env.sxs35t6mhb.us-east-1.elasticbeanstalk.com/products/random')
       .then((response) => {
         const randomProduct = response.data;
         const randomIndex = Math.floor(Math.random() * randomProduct.variants.length);

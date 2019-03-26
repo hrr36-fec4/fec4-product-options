@@ -38,7 +38,7 @@ class ProductOptions extends React.Component {
   }
 
   getRandomProduct() {
-    axios.get('http://localhost:3001/products/random')
+    axios.get('/products/random')
       .then((response) => {
         const randomProduct = response.data;
         const randomIndex = Math.floor(Math.random() * randomProduct.variants.length);

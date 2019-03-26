@@ -6,14 +6,16 @@
   "author": "Jake Ascher",
   "license": "ISC",
   "engines": {
-    "node": ">=6.13.0"
+    "node": "10.x"
   },
   "scripts": {
-    "start": "nodemon server/index.js",
+    "start-local": "nodemon server/index.js",
+    "start": "node server/index.js",
     "test": "jest",
-    "dev:react": "webpack -d --watch",
-    "build": "webpack --mode production",
-    "db:setup": "node db/seed.js"
+    "webpack-build-dev": "webpack -d --watch",
+    "webpack-build": "webpack --mode production",
+    "db-setup": "node db/seed.js",
+    "heroku-postbuild": "npm run webpack-build"
   },
   "dependencies": {
     "axios": "^0.18.0",
